@@ -1,0 +1,7 @@
+interface:
+  display_name: "小说写作"
+  short_description: "仅在显式调用后生成小说文本，并保留初稿、审查稿与完整重写稿"
+  default_prompt: "使用 $novel-writing 根据我的要求生成小说内容，并保留初稿、审查稿和完整重写稿。"
+
+policy:
+  allow_implicit_invocation: false
