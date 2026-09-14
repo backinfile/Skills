@@ -1,0 +1,3 @@
+interface:
+  display_name: "Worktree Task"
+  short_description: "Implement safely in a worktree and squash-merge back"

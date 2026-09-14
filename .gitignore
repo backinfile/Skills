@@ -1,0 +1,20 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local credentials and environment
+.env
+.env.*
+!.env.example
+
+# Temporary output
+*.log
+*.tmp
+__pycache__/
+*.py[cod]
+node_modules/

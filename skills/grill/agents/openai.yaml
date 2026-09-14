@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grill"
+  short_description: "Stress-test plans through structured interviews"
+  default_prompt: "Use $grill to interview me about this plan or design until we reach a shared understanding."
