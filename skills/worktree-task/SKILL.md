@@ -13,15 +13,26 @@ Complete the requested change in a temporary worktree, then integrate it safely 
 - Refuse an active Git operation. If the original checkout is dirty, warn that its uncommitted changes will not enter the worktree, preserve them untouched, and proceed from the current branch's latest commit by default.
 - Place the worktree at `../worktrees/<projectName>/<task-slug>` relative to the repository root, unless repository instructions override it.
 - Perform all modification and verification work inside the worktree.
+- Keep a task document under `docs/worktree-tasks/<task-slug>/` inside the worktree and include it in the task commit, so it survives integration and worktree cleanup.
 - Do not perform remote operations or rewrite existing original-branch history unless explicitly requested.
 - Always request explicit user confirmation immediately before merging back; invoking this skill or requesting the original task does not count as confirmation.
 - Preserve the task branch and worktree whenever a safety check or integration fails.
 
+## Task Document
+
+Use `docs/worktree-tasks/<task-slug>/README.md` by default, with the same task slug as the worktree. Create it before implementation and keep these sections concise:
+
+- **Original user input:** Preserve the user's task request verbatim. Append relevant follow-up input verbatim as it arrives, rather than replacing the original request with a summary.
+- **Brief task plan:** Record the intended approach and main steps; update it when the approach changes.
+- **Result and changes:** After implementation, summarize the actual completion status, changed files and behavior, verification results, and any remaining work or limitations. If work stops early, record partial progress accurately.
+
+Finalize the result section before committing. If synchronization changes the implementation or verification results, update the document in the synchronization commit. Preserve the document with the task changes and include its path in the final report.
+
 ## Workflow
 
 1. Check the repository state and refuse conflicting worktree paths or branches. Record any original uncommitted state so it can be protected and verified later.
-2. Create a uniquely named task branch and worktree from the captured original branch's latest commit.
-3. Establish a clean baseline, implement the task, and verify it. Before synchronization, consolidate all task changes into one commit unless the user or repository policy requires multiple commits.
+2. Create a uniquely named task branch and worktree from the captured original branch's latest commit. Create the task document with the original user input and brief plan.
+3. Establish a clean baseline, implement the task, and verify it. Complete the task document's result section, then consolidate all task changes, including the document, into one commit before synchronization unless the user or repository policy requires multiple commits.
 4. Merge the latest local original branch into the task branch. Resolve conflicts only in the worktree, then verify and commit the synchronized result.
 5. Confirm the original checkout is still on the captured branch, its committed HEAD is unchanged since synchronization, and any pre-existing uncommitted state remains intact. If HEAD advanced, repeat synchronization; stop after three races.
 6. Show the target branch, task commit, change summary, verification results, and any original uncommitted state. Ask whether to merge back and wait for explicit confirmation.
@@ -29,4 +40,4 @@ Complete the requested change in a temporary worktree, then integrate it safely 
 8. Verify the committed trees match, checks pass, the original branch contains the consolidated task commit, and pre-existing uncommitted state was preserved.
 9. Unless asked to keep them, remove only the clean worktree and task branch created by this run after proving their content is preserved.
 
-Report the resulting branch, commit, verification, and cleanup state.
+Report the resulting branch, commit, verification, cleanup state, and task document path.
