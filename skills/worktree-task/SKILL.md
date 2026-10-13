@@ -14,6 +14,7 @@ Complete the requested change in a temporary worktree, then integrate it safely 
 - Place the worktree at `../worktrees/<projectName>/<task-slug>` relative to the repository root, unless repository instructions override it.
 - Perform all modification and verification work inside the worktree.
 - Keep a task document under `docs/worktree-tasks/<task-slug>/` inside the worktree and include it in the task commit, so it survives integration and worktree cleanup.
+- Prefer repository-relative paths in task documents and other persisted documentation, such as `src/example.ts` or `docs/worktree-tasks/<task-slug>/README.md`. Express worktree locations relative to the repository root. Avoid machine-specific absolute paths unless necessary; tool calls and safety checks may use them internally, and quoted user input must remain verbatim.
 - Do not perform remote operations or rewrite existing original-branch history unless explicitly requested.
 - Always request explicit user confirmation immediately before merging back; invoking this skill or requesting the original task does not count as confirmation.
 - Preserve the task branch and worktree whenever a safety check or integration fails.
