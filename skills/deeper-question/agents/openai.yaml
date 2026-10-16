@@ -1,0 +1,7 @@
+interface:
+  display_name: "未问出口的问题"
+  short_description: "当对话持续很多轮次，上下文足够长之后才能触发；我只需要问题 不用分析"
+  default_prompt: "使用 $deeper-question。"
+
+policy:
+  allow_implicit_invocation: true
