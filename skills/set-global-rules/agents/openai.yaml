@@ -1,0 +1,7 @@
+interface:
+  display_name: "设置全局协作约定"
+  short_description: "仅在用户主动调用后，将表达方式、最小改动、设计文案和测试约定写入全局 AGENTS.md"
+  default_prompt: "使用 $set-global-rules 将四条协作约定写入我的 Codex 全局 AGENTS.md，保留已有内容并避免重复添加。"
+
+policy:
+  allow_implicit_invocation: false
