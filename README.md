@@ -26,6 +26,6 @@
 
 `novel-writing` 仅在明确调用时启用；`worktree-task` 需要 Git 仓库。
 
-`set-global-rules` 仅由用户主动调用；安装或创建 skill 时不会改写全局 `AGENTS.md`。调用后保留原有内容并合并四条协作约定，重复调用不会重复添加。
+`set-global-rules` 仅由用户主动调用；安装或创建 skill 时不会改写全局 `AGENTS.md`。调用后保留原有内容并合并协作约定，重复调用不会重复添加。
 
 `deeper-question` 仅在对话持续很多轮次、上下文足够长之后触发，只给问题，不用分析。
